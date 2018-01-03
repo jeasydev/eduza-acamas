@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 3, 2018 7:52:20 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="jeasy_acamas" name="com.eduza.member.jpa.pojo.UserProfile" optimistic-lock="version" table="user_profile">
+    <id name="id" type="java.lang.Long">
+      <column name="ID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="username" type="string">
+      <column length="128" name="username" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="80" name="password" not-null="true"/>
+    </property>
+    <property name="secretCode" type="string">
+      <column length="32" name="secretCode" not-null="true"/>
+    </property>
+    <property name="firstName" type="string">
+      <column length="80" name="firstName" not-null="true"/>
+    </property>
+    <property name="midName" type="string">
+      <column length="80" name="midName"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="80" name="lastName" not-null="true"/>
+    </property>
+    <property name="displayName" type="string">
+      <column length="40" name="displayName"/>
+    </property>
+    <property name="gender" type="string">
+      <column length="2" name="gender"/>
+    </property>
+    <property name="email" type="string">
+      <column length="128" name="email" not-null="true"/>
+    </property>
+    <property name="birthDate" type="date">
+      <column length="10" name="birthDate"/>
+    </property>
+    <property name="registedDath" type="timestamp">
+      <column length="19" name="registedDath"/>
+    </property>
+    <property name="isEnabled" type="boolean">
+      <column name="isEnabled" not-null="true"/>
+    </property>
+    <property name="isValidated" type="boolean">
+      <column name="isValidated" not-null="true"/>
+    </property>
+    <property name="lastAccessDatetime" type="timestamp">
+      <column length="19" name="lastAccessDatetime"/>
+    </property>
+    <property name="languageCode" type="string">
+      <column length="8" name="languageCode"/>
+    </property>
+    <property name="countryCode" type="string">
+      <column length="8" name="countryCode"/>
+    </property>
+  </class>
+</hibernate-mapping>

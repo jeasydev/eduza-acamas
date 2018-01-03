@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com</groupId>
+        <artifactId>eduza</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.eduza.acamas.quizre</groupId>
+    <artifactId>member</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+        </dependency>
+        
+        <!-- ***************************** 
+            Spring4
+        ********************************** -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <!--Needed for XML View (with JAXB2)-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        
+        
+        <!-- หนังสือแนะนำ ข้อที่หนึ่ง ต้องมีไอ้นี่-->
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${spring.security.oauth2.version}</version>
+        </dependency>
+              
+        <!-- ไม่มีเกิด spring lass file for javax.servlet.Filter not found -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+        
+        <!-- ***************************** 
+            Hibernate4 & MySQL5 Driver
+        ********************************** -->
+        <dependency>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>4.0.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.11.Final</version>
+        </dependency> 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.1.Final</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
+            <scope>provided</scope>
+        </dependency>
+        
+       
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+      
+       
+       
+       
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <!--ใน spring 4 web.xml ไม่มีความจำเป็น-->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+       
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-endorsed-api</artifactId>
+                                    <version>7.0</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
