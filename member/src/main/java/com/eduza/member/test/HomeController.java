@@ -5,10 +5,9 @@
  */
 package com.eduza.member.test;
 
-
-import com.eduza.member.jpa.pojo.UserProfile;
+import com.eduza.member.jpa.api.UserProfileEntity;
+import com.eduza.member.jpa.api.UserProfileService;
 import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -27,8 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Repository("userProfile")
 public class HomeController {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    // @Autowired ใช้ทดสอบแล้วมันทำงาน
+    // private SessionFactory sessionFactory;
+    //----------------------------------------
+    @Autowired  
+    private UserProfileService userProfileService;
 //    @PersistenceContext(unitName = "testP")
 //    private EntityManager em;
 //    
@@ -54,8 +56,9 @@ public class HomeController {
 //        Query query = sessionFactory.getCurrentSession().createQuery("from UserProfile as user where user.id = :id ");
 //        query.setParameter("id", "1");
 //        List list = query.list();
-        UserProfile user = (UserProfile) sessionFactory.getCurrentSession().get(UserProfile.class, 1L);
-        logger.warn("TestObject: " + user.getUsername());
+        //UserProfile user = (UserProfile) sessionFactory.getCurrentSession().get(UserProfile.class, 1L);
+        UserProfileEntity user = userProfileService.findById(1L);
+        logger.warn("TestObject: 111 " + user.getUsername());
 
 // List<Film> filmList = null;
         //    try {
