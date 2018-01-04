@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author jeasydev
  */
 @Controller
-public class UserAccoutRegistration {
+public class UserAccoutRegistrationController {
     
-    private static final Logger logger = Logger.getLogger(UserAccoutRegistration.class);
+    private static final Logger logger = Logger.getLogger(UserAccoutRegistrationController.class);
     
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
